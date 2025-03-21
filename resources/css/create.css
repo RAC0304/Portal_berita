@@ -1,0 +1,341 @@
+/* Form Styling */
+.berita-container {
+    max-width: 800px;
+    margin: 40px auto;
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    transform: translateY(20px);
+    opacity: 0;
+    animation: fadeInUp 0.8s forwards;
+}
+
+.berita-title {
+    color: #2c3e50;
+    margin-bottom: 30px;
+    font-weight: 600;
+    position: relative;
+    padding-bottom: 10px;
+    text-align: center;
+}
+
+.berita-title:after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 50px;
+    height: 3px;
+    background-color: #3498db;
+    animation: expandWidth 1s forwards;
+}
+
+.form-group {
+    margin-bottom: 25px;
+    position: relative;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+    color: #34495e;
+    transform: translateX(-10px);
+    opacity: 0;
+    animation: slideInLabels 0.5s forwards;
+}
+
+.form-control {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #e0e0e0;
+    border-radius: 4px;
+    font-size: 16px;
+    transition: all 0.3s ease;
+}
+
+.form-control:focus {
+    border-color: #3498db;
+    box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.2);
+    outline: none;
+}
+
+textarea.form-control {
+    min-height: 150px;
+    resize: vertical;
+}
+
+.file-upload {
+    position: relative;
+    overflow: hidden;
+    margin-top: 10px;
+    display: inline-block;
+}
+
+.file-upload-label {
+    display: inline-block;
+    padding: 10px 15px;
+    background-color: #f8f9fa;
+    color: #495057;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.file-upload-label:hover {
+    background-color: #e9ecef;
+}
+
+.file-name {
+    margin-top: 5px;
+    font-size: 14px;
+    color: #6c757d;
+}
+
+.btn-submit {
+    background-color: #3498db;
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    font-size: 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: block;
+    margin: 30px auto 0;
+    opacity: 0;
+    animation: fadeInButton 1s forwards;
+    animation-delay: 0.8s;
+}
+
+.btn-submit:hover {
+    background-color: #2980b9;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+}
+
+.input-feedback {
+    font-size: 14px;
+    color: #e74c3c;
+    margin-top: 5px;
+    display: none;
+}
+
+/* Custom Select Styling */
+.select-container {
+    position: relative;
+    width: 100%;
+    font-family: inherit;
+}
+
+.select-container select {
+    display: none; /* Hide original select element */
+}
+
+.select-styled {
+    position: relative;
+    background-color: #fff;
+    padding: 12px 15px;
+    border: 1px solid #e0e0e0;
+    border-radius: 4px;
+    color: #333;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.select-styled:after {
+    content: "";
+    width: 0;
+    height: 0;
+    border: 7px solid transparent;
+    border-color: #3498db transparent transparent transparent;
+    position: absolute;
+    right: 16px;
+    top: 18px;
+    transition: all 0.3s;
+}
+
+.select-styled:hover {
+    background-color: #f9f9f9;
+}
+
+.select-styled:active,
+.select-styled.active {
+    border-color: #3498db;
+    box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.2);
+}
+
+.select-styled:active:after,
+.select-styled.active:after {
+    transform: rotate(180deg);
+    top: 12px;
+    border-color: #3498db transparent transparent transparent;
+}
+
+.select-options {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    z-index: 999;
+    margin-top: 5px;
+    padding: 0;
+    list-style: none;
+    background-color: #fff;
+    border-radius: 4px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+    max-height: 240px;
+    overflow-y: auto;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: all 0.3s;
+}
+
+.select-options.show {
+    display: block;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.select-options li {
+    margin: 0;
+    padding: 12px 15px;
+    transition: all 0.15s ease-in;
+    position: relative;
+    overflow: hidden;
+}
+
+.select-options li:hover {
+    color: #fff;
+    background-color: #3498db;
+}
+
+.select-options li:before {
+    content: "";
+    position: absolute;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    transition: all 0.4s;
+    z-index: -1;
+    opacity: 0;
+}
+
+.select-options li:hover:before {
+    transform: translate(-50%, -50%) scale(3);
+    opacity: 1;
+}
+
+.select-options li[rel="hide"] {
+    display: none;
+}
+
+.select-options li.is-selected {
+    background-color: #ebf5fb;
+    color: #3498db;
+    font-weight: 500;
+}
+
+.select-options li.is-selected:hover {
+    background-color: #3498db;
+    color: #fff;
+}
+
+/* Badge/icon styling */
+.category-icon {
+    display: inline-block;
+    margin-right: 8px;
+    width: 20px;
+    text-align: center;
+}
+
+/* Edit page styles */
+.edit-form .select-styled:active,
+.edit-form .select-styled.active {
+    border-color: #f39c12;
+    box-shadow: 0 0 0 2px rgba(243, 156, 18, 0.2);
+}
+
+.edit-form .select-styled:active:after,
+.edit-form .select-styled.active:after {
+    border-color: #f39c12 transparent transparent transparent;
+}
+
+.edit-form .select-options li:hover,
+.edit-form .select-options li.is-selected:hover {
+    background-color: #f39c12;
+}
+
+.edit-form .select-options li.is-selected {
+    background-color: #fef5e7;
+    color: #f39c12;
+}
+
+/* Animations */
+@keyframes fadeInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes expandWidth {
+    from {
+        width: 0;
+    }
+    to {
+        width: 50px;
+    }
+}
+
+@keyframes slideInLabels {
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes fadeInButton {
+    to {
+        opacity: 1;
+    }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .berita-container {
+        padding: 20px;
+        margin: 20px auto;
+    }
+
+    .form-control {
+        padding: 10px;
+    }
+
+    .btn-submit {
+        width: 100%;
+    }
+}
+
+/* File preview styles */
+.preview-container {
+    margin-top: 15px;
+    text-align: center;
+    display: none;
+}
+
+.image-preview {
+    max-width: 100%;
+    max-height: 200px;
+    border-radius: 4px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
