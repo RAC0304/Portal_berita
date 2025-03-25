@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.home') {{-- Meng-extend view ke layout home --}}
 
 @section('content')
 <style>

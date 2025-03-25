@@ -15,10 +15,18 @@ Route::prefix('berita')->group(function () {
     Route::get('/{id}/edit', [BeritaController::class, 'edit'])->name('berita.edit');
     Route::put('/{id}', [BeritaController::class, 'update'])->name('berita.update');
     Route::delete('/{id}', [BeritaController::class, 'destroy'])->name('berita.destroy');
+// In routes/web.php
     Route::get('/search', [BeritaController::class, 'search'])->name('berita.search');
-
-    // admin
-    // Route::prefix('admin')->group(function () {
-    //     Route::get('/admin', [AdminController::class, 'index'])->name('admin.index');
-    // });
+    Route::get('/category/{category}', [BeritaController::class, 'filterByCategory'])->name('berita.category');
 });
+//     Route::prefix('admin')->group(function () {
+//     Route::get('/admin', [AdminController::class, 'index'])->name('admin.index');
+// });
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

@@ -1,120 +1,37 @@
-@extends('layouts.app')
+@extends('layouts.home') {{-- Meng-extend view ke layout home --}}
 
 @section('content')
 <style>
-    .welcome-content {
-        text-align: center;
-        padding: 50px 20px;
-        background-color: #f9f9f9;
-    }
 
-    .welcome-content h1 {
-        font-size: 2.5em;
-        margin-bottom: 20px;
-    }
-
-    .welcome-content p {
-        font-size: 1.2em;
-        color: #555;
-    }
-
-    .news-section {
-        padding: 40px 20px;
-        background-color: #fff;
-    }
-
-    .news-section h2, .categories-section h2 {
-        text-align: center;
-        margin-bottom: 30px;
-        font-size: 2em;
-    }
-
-    .news-grid, .categories-grid {
-        display: flex;
-        justify-content: space-around;
-        flex-wrap: wrap;
-    }
-
-    .news-card, .category-card {
-        width: 30%;
-        margin-bottom: 20px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        border-radius: 8px;
-        overflow: hidden;
-        background-color: #fff;
-    }
-
-    .news-card img {
-        width: 100%;
-        height: 200px;
-        width: 100%;
-    }
-
-    .news-card h3, .category-card h3 {
-        padding: 15px;
-        font-size: 1.5em;
-    }
-
-    .news-card p, .category-card p {
-        padding: 0 15px 15px;
-        color: #555;
-    }
-
-    .read-more {
-        display: block;
-        padding: 10px 15px;
-        background-color: #e74c3c;
-        color: white;
-        text-align: center;
-        text-decoration: none;
-        border-radius: 5px;
-        margin: 15px;
-        transition: background-color 0.3s ease;
-    }
-
-    .read-more:hover {
-        background-color: #c0392b;
-    }
-
-    .categories-section {
-        padding: 40px 20px;
-        background-color: #f9f9f9;
-    }
-
-    .category-card {
-        text-align: center;
-        padding: 20px;
-    }
-
-    @media (max-width: 768px) {
-        .news-card, .category-card {
-            width: 100%;
-            margin-bottom: 20px;
-        }
-    }
 </style>
+@vite(['resources/css/beranda.css', 'resources/js/navbar.js']) {{-- Memanggil file css dan js yang telah di compile oleh vite --}}
 <div class="container">
      <!-- Content placeholder -->
      <div class="content">
         <h1>Selamat Datang di Portal Berita Online</h1>
-        <p>Ini adalah contoh halaman beranda portal berita dengan navbar animasi.</p>
     </div>
 
     <div class="news-section">
         <h2>Berita Terbaru</h2>
         <div class="news-grid">
-            @foreach ($beritas as $berita )
-            <div class="news-card">
-                @if ($berita->gambar)
-                    <img src="{{ asset('uploads/' . $berita->gambar) }}" alt="Gambar Berita" width="50">
-                @else
-                    Tidak ada gambar
-                @endif
-                <h3>{{$berita->judul}}</h3>
-                <p>{{$berita->isi}}</p>
-                <a href="{{ route('berita.show', $berita->id) }}" class="read-more"> Baca Selengkapnya</a>
+            @foreach ($beritas as $berita)
+            <div class="news-article" data-category="{{ strtolower($berita->kategori) }}">
+                <div class="news-card">
+                    @if ($berita->gambar)
+                        <img src="{{ asset('uploads/' . $berita->gambar) }}" alt="Gambar Berita">
+                    @else
+                        <img src="{{ asset('images/default-news.jpg') }}" alt="Default Berita">
+                    @endif
+                    <h3>{{ $berita->judul }}</h3>
+                    <p>{{ Str::limit($berita->isi, 100) }}</p>
+                    <a href="{{ route('berita.show', $berita->id) }}" class="read-more">Baca Selengkapnya</a>
+                </div>
             </div>
             @endforeach
+        </div>
+        {{-- //Jika tidak ada berita dalam kategori ini, maka akan muncul pesan berikut --}}
+        <div id="no-results-message" style="display:none;" class="text-center mt-5">
+            <h3>Tidak ada berita dalam kategori ini.</h2>
         </div>
     </div>
 

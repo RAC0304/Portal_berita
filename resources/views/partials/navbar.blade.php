@@ -33,24 +33,32 @@
         </div>
 
         <ul class="menu">
-            <li class="active"><a href="#">Beranda</a></li>
-            <li><a href="#">Nasional</a></li>
-            <li><a href="#">Internasional</a></li>
-            <li><a href="#">Ekonomi</a></li>
-            <li><a href="#">Olahraga</a></li>
-            <li><a href="#">Teknologi</a></li>
-            <li><a href="#">Hiburan</a></li>
-            <li><a href="#">Gaya Hidup</a></li>
+            <li class="active"><a href="{{route('berita.index')}}">Beranda</a></li>
+            <li><a href="{{route('berita.category', 'Nasional')}}">Nasional</a></li>
+            <li><a href="{{route('berita.category', 'Internasional')}}">Internasional</a></li>
+            <li><a href="{{route('berita.category', 'Ekonomi')}}">Ekonomi</a></li>
+            <li><a href="{{route('berita.category', 'Olahraga')}}">Olahraga</a></li>
+            <li><a href="{{route('berita.category', 'Teknologi')}}">Teknologi</a></li>
+            <li><a href="{{route('berita.category', 'Hiburan')}}">Hiburan</a></li>
+            <li><a href="{{route('berita.category', 'Gaya Hidup')}}">Gaya Hidup</a></li>
         </ul>
-
-        <button class="sign-in-btn" id="search-toggle">
+        @if(!Auth::guard('admin')->check())
+        <button class="sign-in-btn" id="search-toggle" data-bs-toggle="modal" data-bs-target="#loginModal">
             <i class="fas fa-sign-in-alt"></i> Sign In
         </button>
-
+        else
+        {{-- <form method="POST" action="#">
+            @csrf
+            <button class="sign-in-btn" type="submit">
+                <i class="fas fa-sign-out-alt"></i> Sign Out
+            </button>
+        </form> --}}
+        @endif
         <div class="hamburger" id="hamburger">
             <span></span>
             <span></span>
             <span></span>
         </div>
     </div>
+    @stack('modals')
 </nav>

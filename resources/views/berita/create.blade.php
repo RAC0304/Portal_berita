@@ -1,8 +1,8 @@
-@extends('layouts.admin')
+@extends('layouts.app')
 
 @section('content')
 @vite(['resources/css/create.css','resources/js/create.js'])
-<div class="container">
+<div class="container" style="margin-top: 150px">
     <div class="berita-container">
         <h1 class="berita-title">Tambah Berita</h1>
         <form action="{{ route('berita.store') }}" method="POST" enctype="multipart/form-data" class="edit-form">
