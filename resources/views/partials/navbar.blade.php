@@ -42,11 +42,11 @@
             <li><a href="{{route('berita.category', 'Hiburan')}}">Hiburan</a></li>
             <li><a href="{{route('berita.category', 'Gaya Hidup')}}">Gaya Hidup</a></li>
         </ul>
-        @if(!Auth::guard('admin')->check())
+        {{-- @if(!Auth::guard('admin')->check()) --}}
         <button class="sign-in-btn" id="search-toggle" data-bs-toggle="modal" data-bs-target="#loginModal">
             <i class="fas fa-sign-in-alt"></i> Sign In
         </button>
-        else
+        {{-- else --}}
         {{-- <form method="POST" action="#">
             @csrf
             <button class="sign-in-btn" type="submit">
