@@ -1,8 +1,8 @@
-@extends('layouts.admin')
+@extends('layouts.home')
 
 @section('content')
 @vite(['resources/css/edit.css','resources/js/edit.js'])
-<div class="container">
+<div class="container" style="margin-top: 150px">
     <div class="berita-container">
         <h1 class="berita-title">Edit Berita</h1>
         <form action="{{ route('berita.update', $berita->id) }}" method="POST" enctype="multipart/form-data">

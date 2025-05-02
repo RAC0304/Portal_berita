@@ -53,7 +53,7 @@
                 <i class="fas fa-sign-out-alt"></i> Sign Out
             </button>
         </form> --}}
-        @endif
+        {{-- @endif --}}
         <div class="hamburger" id="hamburger">
             <span></span>
             <span></span>

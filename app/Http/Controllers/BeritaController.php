@@ -14,6 +14,13 @@ class BeritaController extends Controller
         return view('berita.index', compact('beritas', 'jumlahBerita'));
     }
 
+    public function indexAdmin()
+    {
+        $jumlahBerita = Berita::count();
+        $beritas = Berita::latest()->paginate(10);
+        return view('berita.index-admin', compact('beritas', 'jumlahBerita'));
+    }
+
     public function create()
     {
         $jumlahBerita = Berita::count();

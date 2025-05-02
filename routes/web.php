@@ -7,7 +7,7 @@ use App\Http\Controllers\BeritaController;
 Route::get('/', [BeritaController::class, 'index'])->name('berita.index');
 
 Route::prefix('berita')->group(function () {
-    Route::get('/', [BeritaController::class, 'index'])->name('berita.index');
+    Route::get('/admin', [BeritaController::class, 'indexAdmin'])->name('berita.indexAdmin');
     Route::get('/create', [BeritaController::class, 'create'])->name('berita.create');
     Route::post('/', [BeritaController::class, 'store'])->name('berita.store');
     Route::get('/{id}', [BeritaController::class, 'show'])->name('berita.show');
